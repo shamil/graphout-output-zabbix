@@ -9,8 +9,6 @@ The module adds support for outputing **Graphout** queries to Zabbix server usin
 ### Configuration params
 
 to use this module, make sure to configure it in **Graphout** config.
-
-
 here are the available params:
 
 ```json
