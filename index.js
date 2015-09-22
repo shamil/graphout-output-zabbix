@@ -4,7 +4,7 @@
 ZabbixSender = require('node-zabbix-sender');
 
 // constructor
-var ZabbixOutput = module.exports = function(events, logger, params) {
+var ZabbixOutput = module.exports = function(events, log, params) {
     // let's first validate required params
     validateParams(params);
 
@@ -22,7 +22,7 @@ var ZabbixOutput = module.exports = function(events, logger, params) {
     // add item to payload on result
     events.on('result', function(result, options) {
         var item = params.namespace + '.' + options.name;
-        logger.debug('zabix-output: adding item', {key: item, value: result});
+        log.debug('adding item', {key: item, value: result});
         Sender.addItem(item, result);
     });
 
@@ -33,14 +33,14 @@ var ZabbixOutput = module.exports = function(events, logger, params) {
             return;
         }
 
-        logger.debug('zabbix-output: sending', Sender.countItems(), 'items');
+        log.debug('sending', Sender.countItems(), 'items');
         Sender.send(function(err, res) {
             if (err) {
-                logger.error('zabbix-output: send failed', {error: err.message});
+                log.error('send failed', {error: err.message});
                 return;
             }
 
-            logger.debug('zabbix-output: response', res);
+            log.debug('response', res);
         });
     }, 1000);
 };
