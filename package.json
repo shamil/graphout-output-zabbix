@@ -1,6 +1,6 @@
 {
   "name": "graphout-output-zabbix",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A zabbix output module for graphout (github.com/shamil/graphout).",
   "main": "index.js",
   "scripts": {
