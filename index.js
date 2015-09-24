@@ -21,7 +21,7 @@ var ZabbixOutput = module.exports = function(events, log, params) {
 
     // add item to payload on result
     events.on('result', function(result, options) {
-        var item = params.namespace + '.' + options.name;
+        var item = params.namespace + options.name;
         log.debug('adding item', {key: item, value: result});
         Sender.addItem(item, result);
     });
@@ -47,8 +47,18 @@ var ZabbixOutput = module.exports = function(events, log, params) {
 
 function validateParams(params) {
     ['host', 'port', 'target', 'namespace'].forEach(function(param) {
-        if (typeof params[param] === 'undefined') {
-            throw new Error('param ' + param + ' missing');
+        switch (param) {
+            case 'port':
+                params[param] = params[param] || 10051;
+                break;
+
+            case 'namespace':
+                params[param] = params[param] ? params[param] + '.' : '';
+                break;
+
+            default:
+                if (typeof params[param] === 'undefined')
+                    throw new Error('param ' + param + ' missing');
         }
     });
 }

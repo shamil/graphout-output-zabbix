@@ -35,7 +35,7 @@ set this to the zabbix server host/ip
 
 **`params.port`**
 
-set this to the zabbix server port, usually `10051`
+set this to the zabbix server port, usually (and **default**) is `10051`
 
 **`params.target`**
 
@@ -46,4 +46,4 @@ the host must exist in zabbix server.
 
 this is just a prefix of the item key. for example, if you have query named `http_latency`,
 and `namespace` is `graphout`, the final item's key name will be `graphout.http_latency` and
-this is the key must exist in zabbix server under `target` host.
+this is the key must exist in zabbix server under `target` host. the parameter is **optional**
