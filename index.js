@@ -21,7 +21,7 @@ var ZabbixOutput = module.exports = function(events, log, params) {
 
     // add item to payload on result
     events.on('result', function(result, options) {
-        var item = params.namespace + options.name;
+        var item = (params.namespace + options.name).replace(/\.+/g, '.');
         log.debug('adding item', {key: item, value: result});
         Sender.addItem(item, result);
     });
@@ -53,7 +53,7 @@ function validateParams(params) {
                 break;
 
             case 'namespace':
-                params[param] = params[param] ? params[param] + '.' : '';
+                params[param] = params[param] ? params[param] + '.' : 'graphout.';
                 break;
 
             default:
