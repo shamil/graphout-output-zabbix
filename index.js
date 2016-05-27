@@ -1,7 +1,7 @@
 /**
  * zabbix output for graphout
  */
-ZabbixSender = require('node-zabbix-sender');
+var ZabbixSender = require('node-zabbix-sender');
 
 // constructor
 var ZabbixOutput = module.exports = function(events, log, params) {

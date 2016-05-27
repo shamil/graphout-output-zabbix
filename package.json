@@ -1,6 +1,6 @@
 {
   "name": "graphout-output-zabbix",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A zabbix output module for graphout (github.com/shamil/graphout).",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/shamil/graphout-output-zabbix#readme",
   "dependencies": {
-    "node-zabbix-sender": "^1.0.7"
+    "node-zabbix-sender": "^1.0.8"
   }
 }
